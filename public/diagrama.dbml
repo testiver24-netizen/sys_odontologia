@@ -1,0 +1,11 @@
+Table ajustes {
+  id integer [pk, increment ] // Clave primaria autoincremental
+  nombre varchar [not null]
+  descripcion varchar 
+  direccion varchar [not null]
+  telefono varchar [not null]
+  email varchar [not null]
+  divisa varchar [not null]
+  url_logo varchar
+  web varchar
+}

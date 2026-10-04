@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cda2add6397422fb1a2eb5b9207f1575",
+    "content-hash": "0006dc049891f06e84bcabfc06854b50",
     "packages": [
         {
             "name": "brick/math",
@@ -5937,6 +5937,73 @@
                 }
             ],
             "time": "2026-08-30T20:10:52+00:00"
+        },
+        {
+            "name": "takielias/tablar",
+            "version": "13.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/takielias/tablar.git",
+                "reference": "27aa8ada9782fc51c7011e97cac08b3bf0725024"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/takielias/tablar/zipball/27aa8ada9782fc51c7011e97cac08b3bf0725024",
+                "reference": "27aa8ada9782fc51c7011e97cac08b3bf0725024",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^12.0|^13.0",
+                "php": "^8.3"
+            },
+            "conflict": {
+                "laravel/breeze": "*",
+                "laravel/jetstream": "*"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "orchestra/testbench": "^10.0|^11.0",
+                "phpunit/phpunit": "^11.0|^12.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "TakiElias\\Tablar\\TablarServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-main": "13.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TakiElias\\Tablar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taki Elias",
+                    "email": "taki.elias@gmail.com"
+                }
+            ],
+            "description": "Tablar: A Laravel Dashboard Preset Featuring Dark Mode and Dynamic Menu Generation for Effortless Navigation and Fast Development.",
+            "keywords": [
+                "bootstrap",
+                "laravel",
+                "preset",
+                "tabler",
+                "vite"
+            ],
+            "support": {
+                "issues": "https://github.com/takielias/tablar/issues",
+                "source": "https://github.com/takielias/tablar/tree/13.8.0"
+            },
+            "time": "2026-09-05T07:24:08+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

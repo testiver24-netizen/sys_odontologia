@@ -104,4 +104,41 @@
 @endif
 
 @yield('tablar_js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if (session('swal'))
+    <script>
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: '{{ session('swal.icon') }}',
+            title: '{{ session('swal.title') }}',
+            text: '{{ session('swal.text') }}',
+            timer: 4000,
+            showConfirmButton: false,
+            timerProgressBar: true
+        });
+    </script>
+@elseif (session('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '{{ session('error') }}',
+            confirmButtonText: 'Aceptar',
+            scrollbarPadding: false,
+            heightAuto: false
+        });
+    </script>
+@elseif ($errors->any())
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error de validación',
+            html: '{!! implode('<br>', $errors->all()) !!}',
+            confirmButtonText: 'Aceptar',
+            scrollbarPadding: false,
+            heightAuto: false
+        });
+    </script>
+@endif
 </html>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AjusteController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,3 +16,11 @@ Route::middleware('auth')->prefix('ajustes')->name('ajustes.')->group(function (
    Route::post('/create',[AjusteController::class,'store'])->name('store');
 
 });
+// Roles
+Route::middleware('auth')->prefix('roles')->name('roles.')->group(function () {
+   Route::get('/',[RoleController::class,'index'])->name('index');
+   Route::post('/crear',[RoleController::class,'store'])->name('store');
+   Route::put('/{id}/actualizar',[RoleController::class,'update'])->name('update');
+   Route::delete('/{id}/eliminar',[RoleController::class,'destroy'])->name('destroy');
+});
+

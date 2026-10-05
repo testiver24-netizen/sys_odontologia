@@ -172,19 +172,56 @@ return [
     |
     */
 
-    'menu' => [
-        [
-            'text' => 'Home',
-            'icon' => 'ti ti-home',
-            'url' => 'home',
-        ],
-        [
-            'text' => 'Ajustes',
-            'icon' => 'ti ti-settings',
-            'url' => 'ajustes'
+   'menu' => [
+    [
+        'text' => 'Home',
+        'icon' => 'ti ti-home',
+        'url'  => 'home',
+    ],
+    [
+        'text' => 'Ajustes',
+        'icon' => 'ti ti-settings',
+        'url'  => 'ajustes',
+    ],
+    [
+        'text' => 'seguridad',
+        'icon' => 'ti ti-shield-check',
+        'url'  => null, // sin url porque es padre
+        'submenu' => [
+            [
+                'text' => 'Roles',
+                'icon' => 'ti ti-user-check',
+                'url'  => 'roles',
+            ],
+            [
+                'text' => 'Permisos',
+                'icon' => 'ti ti-shield-lock',
+                'url'  => 'permisos',
+            ],
+            [
+                'text' => 'Usuarios',
+                'icon' => 'ti ti-users',
+                'url'  => 'usuarios',
+            ],
         ],
     ],
-
+    [
+        'text' => 'Reportes',
+        'icon' => 'ti ti-chart-bar',
+        'submenu' => [
+            [
+                'text' => 'Ventas',
+                'icon' => 'ti ti-shopping-cart',
+                'url'  => 'reportes.ventas',
+            ],
+            [
+                'text' => 'Inventario',
+                'icon' => 'ti ti-box',
+                'url'  => 'reportes.inventario',
+            ],
+        ],
+    ],
+],
     /*
     |--------------------------------------------------------------------------
     | Menu Filters

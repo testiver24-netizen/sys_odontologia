@@ -201,7 +201,7 @@ return [
             [
                 'text' => 'Usuarios',
                 'icon' => 'ti ti-users',
-                'url'  => 'usuarios',
+                'url'  => 'users',
             ],
         ],
     ],

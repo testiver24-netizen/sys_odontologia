@@ -23,7 +23,7 @@ class RoleRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->route('role'); // null al crear, el id (o modelo) al editar
+        $id = $this->route('id'); // null al crear, el id (o modelo) al editar
         return [
             'name'=>'required|string|max:100|unique:roles,name,'. $id
         ];

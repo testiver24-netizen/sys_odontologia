@@ -1,7 +1,7 @@
 Table ajustes {
-  id integer [pk, increment ] // Clave primaria autoincremental
+  id integer [pk, increment, note: 'Clave primaria autoincremental']
   nombre varchar [not null]
-  descripcion varchar 
+  descripcion varchar
   direccion varchar [not null]
   telefono varchar [not null]
   email varchar [not null]
@@ -10,8 +10,17 @@ Table ajustes {
   web varchar
 }
 
+Table users {
+  id bigint [pk, increment, unsigned]
+  name varchar(255) [not null]
+  email varchar(255) [not null, unique]
+  password varchar(255) [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
 Table permissions {
-  id bigint [pk, increment]
+  id bigint [pk, increment, unsigned]
   name varchar(255) [not null]
   guard_name varchar(255) [not null]
   created_at timestamp
@@ -23,52 +32,65 @@ Table permissions {
 }
 
 Table roles {
-  id bigint [pk, increment]
+  id bigint [pk, increment, unsigned]
   name varchar(255) [not null]
   guard_name varchar(255) [not null]
   created_at timestamp
   updated_at timestamp
 
-  indexes {
-    (name, guard_name) [unique]
-  }
+ 
 }
 
-// Permisos asignados directamente a un modelo (ej. User)
 Table model_has_permissions {
-  permission_id bigint [not null]
-  model_type varchar(255) [not null] // ej. App\Models\User
-  model_id bigint [not null]         // id del usuario (relación polimórfica)
+  permission_id bigint [not null, unsigned]
+  model_type varchar(255) [not null]
+  model_id bigint [not null, unsigned]
 
-  indexes {
-    (permission_id, model_id, model_type) [pk]
-    (model_id, model_type)
-  }
+ 
 }
 
-// Roles asignados a un modelo (ej. User)
 Table model_has_roles {
-  role_id bigint [not null]
-  model_type varchar(255) [not null] // ej. App\Models\User
-  model_id bigint [not null]         // id del usuario (relación polimórfica)
+  role_id bigint [not null, unsigned]
+  model_type varchar(255) [not null]
+  model_id bigint [not null, unsigned]
 
-  indexes {
-    (role_id, model_id, model_type) [pk]
-    (model_id, model_type)
-  }
+ 
 }
 
-// Permisos que tiene cada rol
 Table role_has_permissions {
-  permission_id bigint [not null]
-  role_id bigint [not null]
+  permission_id bigint [not null, unsigned]
+  role_id bigint [not null, unsigned]
 
-  indexes {
-    (permission_id, role_id) [pk]
-  }
+  
+}
+
+Table pacientes {
+  id bigint [pk, increment, unsigned]
+  usuario_id bigint [unsigned, unique, null]
+  nombres varchar(150) [not null]
+  apellidos varchar(150) [not null]
+  tipo_documento varchar(20) [not null]
+  numero_documento varchar(20) [not null, unique]
+  fecha_nacimiento date [not null]
+  genero varchar(1) [not null]
+  direccion text [not null]
+  telefono varchar(50)
+  grupo_sanguineo varchar(3)
+  alergias text
+  enfermedades text
+  medicamentos text
+  habitos text
+  antecedentes text
+  odontograma json
+  contacto_emergencia varchar(150)
+  telefono_emergencia varchar(50)
+  observaciones text
+  created_at timestamp
+  updated_at timestamp
 }
 
 Ref: model_has_permissions.permission_id > permissions.id [delete: cascade]
 Ref: model_has_roles.role_id > roles.id [delete: cascade]
 Ref: role_has_permissions.permission_id > permissions.id [delete: cascade]
 Ref: role_has_permissions.role_id > roles.id [delete: cascade]
+Ref: pacientes.usuario_id > users.id [delete: cascade]

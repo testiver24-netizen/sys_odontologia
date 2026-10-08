@@ -73,7 +73,9 @@ class RoleController extends Controller
    public function update(RoleRequest $request, string $id)
 {
     $role = Role::findOrFail($id);
-
+        if ($role->name === 'SUPER-ADMIN') {
+    abort(403, 'Este rol no se puede modificar.');
+}
     $role->update([
         'name' => strtoupper($request->name),
     ]);

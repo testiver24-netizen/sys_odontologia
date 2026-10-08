@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AjusteController;
+use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -30,5 +31,15 @@ Route::middleware('auth')->prefix('users')->name('users.')->group(function () {
    Route::post('/crear',[UserController::class,'store'])->name('store');
    Route::put('/{id}/actualizar',[UserController::class,'update'])->name('update');
    Route::delete('/{id}/eliminar',[UserController::class,'destroy'])->name('destroy');
+});
+// Pacientes
+Route::middleware('auth')->prefix('pacientes')->name('pacientes.')->group(function () {
+   Route::get('/',[PacienteController::class,'index'])->name('index');
+   Route::get('/crear',[PacienteController::class,'create'])->name('create');
+   Route::post('/store',[PacienteController::class,'store'])->name('store');
+   Route::get('/{id}/edit',[PacienteController::class,'edit'])->name('edit');
+   Route::get('/{id}/show',[PacienteController::class,'show'])->name('show');
+   Route::put('/{id}/actualizar',[PacienteController::class,'update'])->name('update');
+   Route::delete('/{id}/eliminar',[PacienteController::class,'destroy'])->name('destroy');
 });
 

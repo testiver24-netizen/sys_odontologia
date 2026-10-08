@@ -20,7 +20,7 @@ class UserController extends Controller
     $users = User::query()
        ->withCount('permissions')
         ->when($buscar, fn ($q) => $q->where('name', 'like', "%{$buscar}%"))
-        ->paginate(2)
+        ->paginate(10)
         ->withQueryString();
 
     return view('admin.users.index', compact('users','roles'));

@@ -151,7 +151,7 @@ return redirect()->route('pacientes.index')->with('swal', [
         $paciente=Paciente::findOrfail($id);
         $paciente->user?->forceDelete();
         // $paciente->user?->forceDelete();
-        $paciente->delete();
+        // $paciente->delete();
         return redirect()->route('pacientes.index')->with('swal', [
     'icon' => 'success',
     'title' => 'Eliminado!',

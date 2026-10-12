@@ -226,6 +226,23 @@ return [
         'icon' => 'ti ti-clipboard-heart',
         'url'  => 'pacientes',
     ],
+     [
+        'text' => 'Personal de salud',
+        'icon' => 'ti ti-stethoscope',
+        'submenu'=>[
+             [
+                'text' => 'Especialidades',
+                'icon' => 'ti ti-certificate',
+                'url'  => 'especialidades',
+            ],
+             [
+                'text' => 'Doctores',
+                'icon' => 'ti ti-stethoscope',
+                'url'  => 'doctores',
+            ],
+
+        ]
+    ],
    
 ],
     /*

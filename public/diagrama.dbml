@@ -88,6 +88,25 @@ Table pacientes {
   created_at timestamp
   updated_at timestamp
 }
+Table doctores {
+  id bigint [pk, increment,not null]
+  user_id bigint [not null,ref:- user.id]
+  nombres varchar(150) [not null]
+  apellidos varchar(200) [not null]
+  tipo_documento enum('CI','CE','PASAPORTE') [not null]
+  numero_documento varchar(30) [not null]
+  fecha_nacimiento date [not null]
+  genero enum('M','F') [not null]
+  direccion text 
+  telefono varchar(20) [not null]
+  especialidad varchar(150) [not null]
+  colegiatura varchar(150) [unique,not null]
+  descripcion text [null]
+  observaciones text [null]
+  fotografia varchar(200) [null]
+  created_at timestamp
+}
+
 
 Ref: model_has_permissions.permission_id > permissions.id [delete: cascade]
 Ref: model_has_roles.role_id > roles.id [delete: cascade]

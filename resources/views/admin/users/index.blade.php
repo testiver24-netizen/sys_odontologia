@@ -112,10 +112,11 @@
                             @endforelse
                         </tbody>
                     </table>
-                </div>
-                <div class="card-footer d-flex align-items-center">
+                     <div class="card-footer d-flex align-items-center">
                     {{ $users->links('tablar::pagination') }}
                 </div>
+                </div>
+               
             </div>
         </div>
     </div>

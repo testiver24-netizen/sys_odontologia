@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
@@ -93,8 +94,18 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-       $user=User::findOrfail($id);
-       $user->delete();
+        DB::transaction(function () use($id) {
+             $user=User::findOrfail($id);
+             // 1) borra el hijo primero
+              $user->paciente?->delete();
+               // 1) borra el hijo primero
+              $user->doctor?->delete();
+              // 1) despues borra el padre 
+              $user->delete();
+        });
+      
+       
+       
        return redirect()->route('users.index')->with('swal',[
             'icon'=>'success',
             'title'=>'!Eliminado',

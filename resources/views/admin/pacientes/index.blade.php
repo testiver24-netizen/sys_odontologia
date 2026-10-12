@@ -74,7 +74,7 @@
                                     <td>{{ $paciente->nombres }} {{ $paciente->apellidos }}</td>
                                     <td>{{ $paciente->tipo_documento }}: {{ $paciente->numero_documento }}</td>
                                     <td>{{ $paciente->telefono }}</td>
-                                    <td>{{ $paciente->user->email }}</td>
+                                    <td>{{ $paciente->user->email ?? '-'}}</td>
                                     <td>
                                         <span
                                             class="badge {{ $paciente->genero === 'M' ? 'bg-blue text-white' : 'bg-pink text-white' }}">
@@ -125,10 +125,11 @@
                             @endforelse
                         </tbody>
                     </table>
-                </div>
-                <div class="card-footer d-flex align-items-center">
+                    <div class="card-footer d-flex align-items-center">
                     {{ $pacientes->links('tablar::pagination') }}
                 </div>
+                </div>
+                
             </div>
         </div>
     </div>

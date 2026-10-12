@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
         'name'=>'Danner Villca Gira',
         'email'=>'danner@admin.com',
         'password'=>Hash::make('12345678'),
-      ]);
+      ])->assignRole('ADMIN');
       User::create([
         'name'=>'yanira Villca Gira',
         'email'=>'yanira@admin.com',

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AjusteController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\EspecialidadController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -41,5 +43,25 @@ Route::middleware('auth')->prefix('pacientes')->name('pacientes.')->group(functi
    Route::get('/{id}/show',[PacienteController::class,'show'])->name('show');
    Route::put('/{id}/actualizar',[PacienteController::class,'update'])->name('update');
    Route::delete('/{id}/eliminar',[PacienteController::class,'destroy'])->name('destroy');
+});
+// Doctores
+Route::middleware('auth')->prefix('doctores')->name('doctores.')->group(function () {
+   Route::get('/',[DoctorController::class,'index'])->name('index');
+   Route::get('/crear',[DoctorController::class,'create'])->name('create');
+   Route::post('/store',[DoctorController::class,'store'])->name('store');
+   Route::get('/{id}/edit',[DoctorController::class,'edit'])->name('edit');
+   Route::get('/{id}/show',[DoctorController::class,'show'])->name('show');
+   Route::put('/{id}/actualizar',[DoctorController::class,'update'])->name('update');
+   Route::delete('/{id}/eliminar',[DoctorController::class,'destroy'])->name('destroy');
+});
+// Doctores
+Route::middleware('auth')->prefix('especialidades')->name('especialidades.')->group(function () {
+   Route::get('/',[EspecialidadController::class,'index'])->name('index');
+   // Route::get('/crear',[EspecialidadController::class,'create'])->name('create');
+   Route::post('/store',[EspecialidadController::class,'store'])->name('store');
+   // Route::get('/{id}/edit',[EspecialidadController::class,'edit'])->name('edit');
+   // Route::get('/{id}/show',[EspecialidadController::class,'show'])->name('show');
+   Route::put('/{id}/actualizar',[EspecialidadController::class,'update'])->name('update');
+   Route::delete('/{id}/eliminar',[EspecialidadController::class,'destroy'])->name('destroy');
 });
 
